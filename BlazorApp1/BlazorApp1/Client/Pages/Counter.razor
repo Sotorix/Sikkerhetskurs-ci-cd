@@ -1,0 +1,32 @@
+﻿@page "/counter"
+
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-secondary" @onclick="DeIncrementCount">Click me to decrease</button>
+<button class="btn btn-auto" @onclick="AutoClicker">Click me to auto count</button>
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private void DeIncrementCount() => currentCount--;
+
+    private void AutoClicker() {
+            for (int i = currentCount; i < 1000; i++)
+            {
+                currentCount++;
+                StateHasChanged();
+            }
+    }
+}
